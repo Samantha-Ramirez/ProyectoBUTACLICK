@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <h1>¡ButaClick está funcionando!</h1>
-        <p>Arquitectura de contenedores separados activa.</p>
+        <h1>¡ButaClick!</h1>
+        <p>ButaClick.</p>
     </div>
 </template>
 

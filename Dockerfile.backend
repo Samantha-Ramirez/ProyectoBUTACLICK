@@ -1,17 +1,22 @@
 FROM php:8.3-fpm-alpine
 
+# Instalar extensiones y librerias necesarias para Laravel con PostgreSQL.
 RUN apk add --no-cache postgresql-dev libpng-dev libzip-dev zip unzip git curl oniguruma-dev libxml2-dev
 
+# Compilar extensiones PHP requeridas por el proyecto.
 RUN docker-php-ext-install pdo_pgsql mbstring exif pcntl bcmath gd zip
 
+# Copiar Composer desde imagen oficial para gestionar dependencias.
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 COPY . .
 RUN git config --global --add safe.directory /var/www/html
+# Registrar entrypoint para automatizar preparacion al iniciar contenedor.
 COPY docker/backend-entrypoint.sh /usr/local/bin/backend-entrypoint
 RUN chmod +x /usr/local/bin/backend-entrypoint
 
+# Ajustar permisos iniciales de carpetas de runtime de Laravel.
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 EXPOSE 9000

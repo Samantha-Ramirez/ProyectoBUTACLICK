@@ -3,12 +3,12 @@
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
 
-    // Configuración de Prettier (Frontend)
+    // Configurar Prettier para frontend.
     "prettier.tabWidth": 4,
     "prettier.singleQuote": true,
     "prettier.semi": true,
 
-    // Asignación de formateadores por lenguaje
+    // Asignar formateador por lenguaje.
     "[vue]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -23,7 +23,7 @@
         "editor.tabSize": 4
     },
 
-    // Configuración de PHP CS Fixer (Backend)
+    // Configurar PHP CS Fixer para backend.
     "php-cs-fixer.onsave": true,
     "php-cs-fixer.allowRisky": true,
     "php-cs-fixer.config": ".php-cs-fixer.dist.php",
