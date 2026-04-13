@@ -9,16 +9,36 @@ Aplicación web con frontend en Vue.js y backend en Laravel, ejecutada con arqui
 - Docker Desktop
 - Docker Compose
 
-### Pasos para iniciar el proyecto
+### Pasos completos para levantar el proyecto (equipo)
 
 1. Clona el repositorio y entra a la carpeta del proyecto.
-2. Ejecuta el comando de construcción e inicio:
+2. Crea el archivo `.env` desde la plantilla `.env.example`.
+3. Ajusta en `.env` las variables necesarias.
+4. Construye e inicia contenedores:
 
 ```bash
 docker compose up --build -d
 ```
 
-3. Abre la aplicación en:
+5. Verifica estado de servicios:
+
+```bash
+docker compose ps
+```
+
+6. Comprueba conexión a base de datos desde Laravel:
+
+```bash
+docker compose exec backend php artisan tinker --execute="DB::connection()->getPdo(); echo 'OK DB';"
+```
+
+7. Valida migraciones:
+
+```bash
+docker compose exec backend php artisan migrate:status
+```
+
+8. Abre la aplicación en:
 
 ```text
 http://localhost
@@ -44,10 +64,16 @@ docker compose stop
 docker compose down
 ```
 
-- Pausar y eliminar contenedores, red, volúmenes (reiniciar bd desde cero):
+- Pausar y eliminar contenedores, red, volúmenes:
 
 ```bash
 docker compose down --volumes
+```
+
+- Pausar y eliminar contenedores, red, imágenes:
+
+```bash
+docker compose down --rmi local
 ```
 
 ## Equipo de desarrollo

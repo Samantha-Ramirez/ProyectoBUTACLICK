@@ -8,6 +8,7 @@ COPY vite.config.js ./
 
 # Copiar codigo de la aplicacion frontend.
 COPY . .
+
 # Registrar entrypoint para automatizar npm install al iniciar contenedor.
 COPY docker/frontend-entrypoint.sh /usr/local/bin/frontend-entrypoint
 RUN chmod +x /usr/local/bin/frontend-entrypoint
