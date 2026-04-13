@@ -32,16 +32,22 @@ http://localhost
 docker compose logs -f
 ```
 
-- Detener contenedores:
+- Pausar contenedores:
 
 ```bash
 docker compose stop
 ```
 
-- Bajar contenedores y red:
+- Pausar y eliminar contenedores, red:
 
 ```bash
 docker compose down
+```
+
+- Pausar y eliminar contenedores, red, volúmenes (reiniciar bd desde cero):
+
+```bash
+docker compose down --volumes
 ```
 
 ## Equipo de desarrollo
