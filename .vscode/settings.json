@@ -1,0 +1,27 @@
+{
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+
+    // Configurar Prettier para frontend.
+    "prettier.tabWidth": 4,
+    "prettier.singleQuote": true,
+    "prettier.semi": true,
+
+    // Asignar formateador por lenguaje.
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[php]": {
+        "editor.tabSize": 4
+    },
+
+    // Desactivar el formateador de Intelephense para evitar conflictos.
+    "intelephense.format.enable": false
+}
