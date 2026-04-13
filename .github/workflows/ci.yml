@@ -39,23 +39,23 @@ jobs:
             DB_PASSWORD: password
 
         steps:
-            - name: Checkout
+            - name: Checking out code
               uses: actions/checkout@v4
 
-            - name: Setup PHP
+            - name: Setting up PHP
               uses: shivammathur/setup-php@v2
               with:
                   php-version: '8.3'
                   extensions: mbstring, pdo_pgsql, bcmath, exif, pcntl, gd, zip
                   coverage: none
 
-            - name: Setup Node
+            - name: Setting up Node.js
               uses: actions/setup-node@v4
               with:
                   node-version: '20'
                   cache: npm
 
-            - name: Cache Composer
+            - name: Caching Composer dependencies
               uses: actions/cache@v4
               with:
                   path: ~/.composer/cache
@@ -63,25 +63,25 @@ jobs:
                   restore-keys: |
                       ${{ runner.os }}-composer-
 
-            - name: Install PHP dependencies
+            - name: Installing PHP dependencies
               run: composer install --no-interaction --prefer-dist --no-progress
 
-            - name: Install JS dependencies
+            - name: Installing JS dependencies
               run: npm ci
 
-            - name: Prepare Laravel env
+            - name: Preparing Laravel environment
               run: |
                   cp .env.example .env
                   php artisan key:generate
 
-            - name: Run migrations
+            - name: Running database migrations
               run: php artisan migrate --force
 
-            - name: Check backend format (Pint)
+            - name: Checking backend formatting
               run: composer format:check
 
-            - name: Run backend tests
+            - name: Running backend tests
               run: php artisan test
 
-            - name: Build frontend
+            - name: Building frontend assets
               run: npm run build
