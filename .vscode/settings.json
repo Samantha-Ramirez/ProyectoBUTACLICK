@@ -19,14 +19,9 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[php]": {
-        "editor.defaultFormatter": "junstyle.php-cs-fixer",
         "editor.tabSize": 4
     },
 
-    // Configurar PHP CS Fixer para backend.
-    "php-cs-fixer.onsave": true,
-    "php-cs-fixer.allowRisky": true,
-    "php-cs-fixer.config": ".php-cs-fixer.dist.php",
-    "php-cs-fixer.executablePath": "${extensionPath}/php-cs-fixer.phar",
+    // Desactivar el formateador de Intelephense para evitar conflictos.
     "intelephense.format.enable": false
 }
